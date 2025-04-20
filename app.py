@@ -72,7 +72,7 @@ st.pyplot(fig)
 
 # 特定年の都道府県比較（棒グラフ）
 st.subheader(f"{year} - Prefecture-level Age-adjusted Mortality Rate ({display_gender})")
-fig2, ax2 = plt.subplots(figsize=(14, 6))
+fig2, ax2 = plt.subplots(figsize=(18, 6))
 data_year = asr_df[(asr_df["性別"] == gender) & (asr_df["都道府県"] != "全国")][["都道府県", str(year)]]
 data_year["英語県名"] = data_year["都道府県"].map(pref_map)
 data_year_sorted = data_year.sort_values(by=str(year), ascending=False)
@@ -80,5 +80,5 @@ ax2.bar(range(len(data_year_sorted)), data_year_sorted[str(year)], color="#0072B
 ax2.set_ylabel("Rate (per 100,000)", fontsize=12)
 ax2.set_xlabel("Prefecture", fontsize=12)
 ax2.set_xticks(range(len(data_year_sorted)))
-ax2.set_xticklabels(data_year_sorted["英語県名"], rotation=60, ha='right', fontsize=10)
+ax2.set_xticklabels(data_year_sorted["英語県名"], rotation=45, ha='center', fontsize=11)
 st.pyplot(fig2)
